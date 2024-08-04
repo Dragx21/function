@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <style>
+        * {
+            background-color: #F7DCB9;
+            color: #914F1E;
+        }
+        h1 {
+            margin-bottom: 20px; 
+        }
+        .select {
+           
+            font-size: 20px; 
+            margin: 10px ; 
+        }
+        #med {
+            display: flex;
+            flex-direction: column;
+        }
+        #big {
+            height: 500px;
+            width: 1000px;
+            border: 4px solid #B5C18E;
+            border-radius: 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: auto;
+        }
+       
+        #box {
+            height: 30px;
+            width: 120px;
+            border: 2px solid #914F1E;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="big">
+        <h1 class="Top">Select One of the types</h1>
+        <div id="med">
+            <label class="select" for="first">
+                <input type="radio" id="first" name="check" onclick="palindrome()"> Palindrome
+            </label>
+            <label class="select" for="second">
+                <input type="radio" id="second" name="check" onclick="leapYear()"> Leap Year
+            </label>
+            <label class="select" for="third">
+                <input type="radio" id="third" name="check" onclick="armstrong()"> Armstrong
+            </label>
+        </div>
+        <input type="number" id="box" placeholder="Type Here">
+        <h2 id="ans">ANS</h2>
+    </div>
+    <script>
+        let input = document.getElementById("box");
+        let heading = document.getElementById("ans");
+
+        
+
+        function palindrome() {
+            let data = parseInt(input.value);
+            let temp = data;
+            let a = 0;
+            let rev = 0;
+            while (temp !== 0) {
+                a = temp % 10;
+                rev = rev * 10 + a;
+                temp = (temp - a) / 10;
+            }
+            if (rev == data) {
+                heading.innerHTML = data + " is a palindrome";
+            } else {
+                heading.innerHTML = data + " is not a palindrome";
+            }
+        }
+
+        function leapYear() {
+            let year = parseInt(input.value);
+            if ((year % 4 == 0 && year % 100 !==0) ) {
+                heading.innerHTML = year + " is a leap year";
+            } else {
+                heading.innerHTML = year + " is not a leap year";
+            }
+        }
+
+        function armstrong() {
+            let num = parseInt(input.value);
+            let sum = 0;
+            let temp = num;
+            while (temp > 0) {
+                let digit = temp % 10;
+                sum = sum + (digit ** 3);
+                temp = (temp - digit) / 10;
+            }
+            if (sum == num) {
+                heading.innerHTML = num + " is an Armstrong number";
+            } else {
+                heading.innerHTML = num + " is not an Armstrong number";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
